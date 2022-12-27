@@ -1,5 +1,43 @@
 import random
-imagine_num, guess_num = random.randint(1, 10),0
-while imagine_num != guess_num:
-    guess_num = int(input('Guess a number between 1 and 10 until you get it right : '))
-print('Well guessed!')
+import math
+# Taking Inputs
+lower = int(input("Enter lower no:- "))
+
+# Taking Inputs
+upper = int(input("Enter upper no:- "))
+
+# generating random number between
+# the lower and upper
+x = random.randint(lower, upper)
+print("\n\t You've only ",
+	round(math.log(upper - lower + 1, 2)),
+	" chances to guess the integer!\n")
+
+# Initializing the number of guesses.
+count = 0
+
+# for calculation of minimum number of
+# guesses depends upon range
+while count < math.log(upper - lower + 1, 2):
+	count += 1
+
+	# taking guessing number as input
+	guess = int(input("Guess a number:- "))
+
+	# Condition testing
+	if x == guess:
+		print("Congratulations you did it in ",
+			count, " try")
+		# Once guessed, loop will break
+		break
+	elif x > guess:
+		print("You guessed too small!")
+	elif x < guess:
+		print("You Guessed too high!")
+
+# If Guessing is more than required guesses,
+# shows this output.
+if count >= math.log(upper - lower + 1, 2):
+	print("\n The number is %d" % x)
+	print("\t Better Luck Next time!")
+
